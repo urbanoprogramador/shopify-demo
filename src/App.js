@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { Provider } from 'react-redux';
+import './core/styles/styles.scss';
+import { store } from './core/store/store';
+import { AppRouter } from './routers/AppRouter';
+import { actionLoadConfigTheme } from './core/store/theme/actions/action';
+
+
+start();
+window.addEventListener('resize', start);
+
+function start(){
+  store.dispatch(actionLoadConfigTheme({width:document.documentElement.clientWidth}));
+}
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <AppRouter />
+    </Provider>
   );
 }
 
