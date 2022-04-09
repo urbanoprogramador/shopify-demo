@@ -14,10 +14,10 @@ import {
 import { AuthRouter } from './AuthRouter';
 import { DashboardRouter } from './DashboardRouter';
 import { ProtectedRouter } from './ProtectedRouter';
-import { selectAuthUser } from './../core/store/auth/selectors/selector';
+import { selectAuthUser } from '../core/store/auth/selectors/selector';
 import { useSelector } from 'react-redux';
-import { Init } from './../components/public/Init';
-import { Product } from './../components/public/product/Product';
+import { Init } from '../components/public/Init';
+import { Product } from '../components/public/product/Product';
 
 
 

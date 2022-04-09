@@ -3,8 +3,8 @@ import React from 'react';
 import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 
 
-import { LoginComponent } from './../components/auth/LoginComponent';
-import { RegisterComponent } from './../components/auth/RegisterComponent';
+import { LoginComponent } from '../components/auth/LoginComponent';
+import { RegisterComponent } from '../components/auth/RegisterComponent';
 
 export const AuthRouter = () => {
     return (

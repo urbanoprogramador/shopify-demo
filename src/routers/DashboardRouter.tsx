@@ -1,8 +1,8 @@
 import React, { } from 'react';
 
-import { Routes, Route,Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 
-import { PerfilComponent } from './../components/auth/PerfilComponent';
+import { PerfilComponent } from '../components/auth/PerfilComponent';
 
 export const DashboardRouter = () => {
     return (

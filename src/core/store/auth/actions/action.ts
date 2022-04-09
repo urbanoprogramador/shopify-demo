@@ -29,7 +29,7 @@ export const asyncStartGoogleLogin = () => (dispatch) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
       console.log(credential);
-      const user = result.user;
+      const user = (result.user as any);
       console.log(user);
 
 
@@ -67,13 +67,13 @@ export const asyncCreateUserWithEmailAndPassword = ({ email, password, displayna
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in 
-
+      auth.currentUser &&
       updateProfile(auth.currentUser, {
         displayName: displayname
       }).then(() => {
         // Profile updated!
         // ...
-        const user = userCredential.user;
+        const user = (userCredential.user as any);
         dispatch(actionAuthUser({
           displayName: user.displayName,
           email: user.email,
@@ -109,7 +109,7 @@ export const asyncLoginEmailAndPassword = ({ email, password }) => dispatch => {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       // Signed in
-      const user = userCredential.user;
+      const user = (userCredential.user as any);
       dispatch(actionAuthUser({
         displayName: user.displayName,
         email: user.email,

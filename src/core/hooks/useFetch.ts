@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { selectAuthUser } from './../store/auth/selectors/selector';
+import { selectAuthUser } from '../store/auth/selectors/selector';
 import { useCallback } from 'react';
 
 

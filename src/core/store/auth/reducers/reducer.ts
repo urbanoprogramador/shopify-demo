@@ -14,7 +14,9 @@ export const typeAuth={
 }
 
 const initLogin=()=>{
-  return localStorage.getItem('user')?JSON.parse(localStorage.getItem('user')):null;
+  const user=localStorage.getItem('user');
+
+  return user?JSON.parse( user ):null;
 }
 
 export const asyncTodos = mat(authName);

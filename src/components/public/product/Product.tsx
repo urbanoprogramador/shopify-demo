@@ -1,8 +1,9 @@
+import React from 'react';
 import { createContext, useContext, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { asyncActionLoadProduct } from "../../../core/store/product/actions/action";
-import { selectGalery, selectOptions, selectPrice, selectProductStatus, selectTitle, selectVendor, selectDescription } from './../../../core/store/product/selectors/selector';
+import { selectGalery, selectOptions, selectPrice, selectProductStatus, selectTitle, selectVendor, selectDescription } from '../../../core/store/product/selectors/selector';
 import { Carousel } from "../../template/carousel/Carousel";
 import { clearHtml } from "../../../core/helper/clearHtml";
 import { Modal } from "../../portal/Modal";
@@ -14,7 +15,21 @@ const formatter = new Intl.NumberFormat('en-US', {
 });
 
 
-export const CartContext = createContext(null);
+
+
+//
+interface ICartContext{
+    color,
+    setColor,
+    size,
+    setSize,
+    cantidad,
+    setCantidad,
+}
+
+
+//context
+export const CartContext = createContext({} as ICartContext);
 
 const Galeria = () => {
 
@@ -259,7 +274,7 @@ export const Product = () => {
 
 <div className="contentModal">
     <div className="titelModal">
-        <h1 style={{textAlaing:'center'}}>Loading...</h1>
+        <h1 style={{textAlign:'center'}}>Loading...</h1>
     </div>
 
 

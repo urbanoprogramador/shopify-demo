@@ -1,10 +1,19 @@
-
+import React from 'react';
 import { useState, useEffect, useContext, createContext } from 'react';
 import { useSelector } from 'react-redux';
-import { selectThemeconfig } from './../../../core/store/theme/selectors/selector';
+import { selectThemeconfig } from '../../../core/store/theme/selectors/selector';
 
-//constext
-export const CarrouselContext = createContext(null);
+
+
+//interfas context
+
+interface ICarousel{
+        active:any,
+        setActive:any,
+        items:any,
+        isImg:any,
+}
+export const CarrouselContext = createContext({} as ICarousel);
 
 
 const Item = ({
@@ -26,11 +35,11 @@ const FooterCarousel = () => {
 
     const { active, items, setActive, isImg } = useContext(CarrouselContext);
 
-    const [points, setPoints] = useState([]);
+    const [points, setPoints] = useState<number[]>([]);
 
     useEffect(() => {
 
-        let array = [];
+        let array:number[] = [];
 
         if (widthScreen <= 768) {
             for (let i = active - 2; i < active + 3; i++) {
@@ -79,6 +88,7 @@ const FooterCarousel = () => {
 
     </>);
 }
+
 
 export const Carousel = ({ items, isImg }) => {
 

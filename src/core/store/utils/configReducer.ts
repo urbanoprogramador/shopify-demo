@@ -50,7 +50,7 @@ export const makeCrudReducer=actions=>(state = [], action) => {
       return action.payload;
     } 
     case actions[1]:{
-      const newTodos = state.map(todo => {
+      const newTodos = state.map((todo:any) => {
         if (todo.id === action.payload.id) {
           return { ...action.payload }
         }
@@ -59,7 +59,7 @@ export const makeCrudReducer=actions=>(state = [], action) => {
       return newTodos; 
     }
     case actions[2]:{
-      const newEntities = state.filter(entities=>{
+      const newEntities = state.filter((entities:any)=>{
         return entities.id !== action.payload
       });
       return newEntities;

@@ -1,7 +1,9 @@
 
+import React from 'react';
+
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { selectAuthUser } from './../../core/store/auth/selectors/selector';
+import { selectAuthUser } from '../../core/store/auth/selectors/selector';
 
 export const PerfilComponent=()=>{
 

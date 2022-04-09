@@ -1,3 +1,4 @@
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { asyncStartGoogleLogin, asyncCreateUserWithEmailAndPassword, asyncLoginEmailAndPassword ,asyncSignOut} from '../../core/store/auth/actions/action';
@@ -14,7 +15,7 @@ export const GoogleCompoent = () => {
   
     const handleGoogleLogin = () => {
       console.log('iniciando');
-      dispatch(asyncStartGoogleLogin({ parametro: 'siiii' }));
+      dispatch(asyncStartGoogleLogin());
     }
   
     const handleCreateUser = () => {
