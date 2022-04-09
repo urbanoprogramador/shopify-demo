@@ -133,7 +133,7 @@ const AddCartItem = ({ close }) => {
                     Size: {size.values[sizeIndex]}
                 </div>
                 <h4>
-                Quantity : {cantidad} Total {price.price_min*cantidad}
+                Quantity : {cantidad} Total {formatter.format((price.price_min*cantidad)/100)}
                 </h4>
             </div>
 
