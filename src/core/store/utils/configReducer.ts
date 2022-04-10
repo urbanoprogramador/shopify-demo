@@ -101,9 +101,14 @@ export const mat = (entity:String):String[] =>([
   `${entity} success`
 ]);
 
+export interface Ierror{
+  payload:String
+}
+
+
 export const asyncMac= (asyncTypes:String[]):Function[]=>([
   mac(asyncTypes[0]),
-  mac(asyncTypes[1]/* ,'payload' */),
+  mac<Ierror>(asyncTypes[1]/* ,'payload' */),
   mac(asyncTypes[2]/* ,'payload' */)
 ]);
 

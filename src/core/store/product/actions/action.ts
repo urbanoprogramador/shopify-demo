@@ -16,6 +16,8 @@ interface IActionProductLoad{
 
 
 
+
+
 export const actionLoadProduct = mac<IActionProductLoad>(typeProduct.loadProduct);
 
 
@@ -36,7 +38,7 @@ export const asyncActionLoadProduct = (url) => (dispatch) => {
       dispatch(actionProductSuccess());
     }).catch((error) => {
       console.log({error});
-      dispatch(actionProductError('no se pudo conectar'));
+      dispatch(actionProductError({payload:error.message}));
     }).finally(() => {
       
     });

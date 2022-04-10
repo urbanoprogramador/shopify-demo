@@ -102,7 +102,7 @@ export const Carousel = ({ items, isImg }:{items:any[],isImg:boolean}) => {
         isImg
     }}>
 
-        <div className="BodyCarrusel">
+        <div className="BodyCarrusel" data-testid="carrusel">
             <div className='ContenCarrousel' style={{ width: (100 * items.length) + "%", transform: "translateX(-" + ((100 / items.length) * active) + "%)" }}>
                 {
                     items.map((e, indice) => {

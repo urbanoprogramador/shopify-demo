@@ -29,6 +29,8 @@ paso uno
 
 ### npm i -D --exact jest-watch-typeahead@0.6.5
 
+### npm install @reduxjs/toolkit
+
 paso 2 crear el archivo jest.config.js con el siguiente contenido
 
 ``` JavaScript

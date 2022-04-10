@@ -14,7 +14,7 @@ function start(){
 }
 
 
-function App():JSX.Element {
+function App() {
   return (
     <Provider store={store}>
       <AppRouter />

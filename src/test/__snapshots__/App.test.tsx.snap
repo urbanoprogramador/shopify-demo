@@ -1,0 +1,309 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Probando el enrutamiento Prueba 2 1`] = `undefined`;
+
+exports[`Probando el enrutamiento Prueba uno  1`] = `"Holamundo"`;
+
+exports[`Probando el enrutamiento prueba de Carousel 1`] = `
+<div
+  class="BodyCarrusel"
+  data-testid="carrusel"
+>
+  <div
+    class="ContenCarrousel"
+    style="width: 400%; transform: translateX(-0%);"
+  >
+    <div
+      class="itemCarrusel "
+      style="width: 25%;"
+    >
+      <img
+        alt="imagen del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-4.jpg?v=1639585159"
+      />
+    </div>
+    <div
+      class="itemCarrusel "
+      style="width: 25%;"
+    >
+      <img
+        alt="imagen del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-3.jpg?v=1639585158"
+      />
+    </div>
+    <div
+      class="itemCarrusel "
+      style="width: 25%;"
+    >
+      <img
+        alt="imagen del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-2.jpg?v=1639585158"
+      />
+    </div>
+    <div
+      class="itemCarrusel "
+      style="width: 25%;"
+    >
+      <img
+        alt="imagen del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-1.jpg?v=1639585159"
+      />
+    </div>
+  </div>
+  <div
+    class="bodyMinuatura"
+  >
+    <div
+      class="bodyMinuaturaItem"
+    >
+      <img
+        alt="miniatura del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-1.jpg?v=1639585159"
+      />
+    </div>
+    <div
+      class="bodyMinuaturaItem"
+    >
+      <img
+        alt="miniatura del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-4.jpg?v=1639585159"
+      />
+    </div>
+    <div
+      class="bodyMinuaturaItem"
+    >
+      <img
+        alt="miniatura del producto"
+        src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-3.jpg?v=1639585158"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Probando el enrutamiento prueba de product 1`] = `
+<div
+  class="contentProduct"
+  data-testid="producto"
+  id="demo"
+>
+  <div
+    class="row"
+  >
+    <div
+      class="BodyCarrusel"
+      data-testid="carrusel"
+    >
+      <div
+        class="ContenCarrousel"
+        style="width: 400%; transform: translateX(-0%);"
+      >
+        <div
+          class="itemCarrusel "
+          style="width: 25%;"
+        >
+          <img
+            alt="imagen del producto"
+            src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-1.jpg?v=1639585159"
+          />
+        </div>
+        <div
+          class="itemCarrusel "
+          style="width: 25%;"
+        >
+          <img
+            alt="imagen del producto"
+            src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-2.jpg?v=1639585158"
+          />
+        </div>
+        <div
+          class="itemCarrusel "
+          style="width: 25%;"
+        >
+          <img
+            alt="imagen del producto"
+            src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-3.jpg?v=1639585158"
+          />
+        </div>
+        <div
+          class="itemCarrusel "
+          style="width: 25%;"
+        >
+          <img
+            alt="imagen del producto"
+            src="//cdn.shopify.com/s/files/1/0454/8316/3809/products/product-4.jpg?v=1639585159"
+          />
+        </div>
+      </div>
+      <div
+        class="bodyMinuatura"
+      />
+    </div>
+  </div>
+  <div
+    class="row"
+  >
+    <div
+      class="headerProduct"
+    >
+      <h3>
+        Graditest Store
+      </h3>
+      <h1>
+        Free Trainer 3 / MMW
+      </h1>
+      <h2>
+        $
+        285.00
+         
+        <span>
+          $
+          370.00
+        </span>
+      </h2>
+    </div>
+    <hr />
+    <div
+      class="contectOpction"
+    >
+      <div
+        class="rowLabel"
+      >
+        Color:
+      </div>
+      <div
+        class="rowValue"
+      >
+        <span
+          class="selectColorBorder active"
+        >
+          <span
+            class="selectColor"
+            style="background: Red;"
+          />
+        </span>
+        <span
+          class="selectColorBorder "
+        >
+          <span
+            class="selectColor"
+            style="background: Black;"
+          />
+        </span>
+      </div>
+    </div>
+    <hr />
+    <div
+      class="contectOpction"
+    >
+      <div
+        class="rowLabel"
+      >
+        Size:
+      </div>
+      <div
+        class="rowValue"
+      >
+        <span
+          class="SelectSize active"
+        >
+          7
+        </span>
+        <span
+          class="SelectSize "
+        >
+          7.5
+        </span>
+        <span
+          class="SelectSize "
+        >
+          8
+        </span>
+        <span
+          class="SelectSize "
+        >
+          8.5
+        </span>
+        <span
+          class="SelectSize "
+        >
+          9
+        </span>
+        <span
+          class="SelectSize "
+        >
+          9.5
+        </span>
+        <span
+          class="SelectSize "
+        >
+          10
+        </span>
+        <span
+          class="SelectSize "
+        >
+          10.5
+        </span>
+        <span
+          class="SelectSize "
+        >
+          11
+        </span>
+        <span
+          class="SelectSize "
+        >
+          11.5
+        </span>
+      </div>
+    </div>
+    <hr />
+    <div
+      class="justify2"
+    >
+      <div
+        class="buttonNumero"
+      >
+        <button>
+          -
+        </button>
+        <input
+          class="CantidadTesting"
+          type="text"
+          value="0"
+        />
+        <button
+          class="addCartTesting"
+        >
+          +
+        </button>
+      </div>
+      <div
+        class="rigth"
+      >
+        total $ 
+        0
+      </div>
+    </div>
+    <div
+      class=""
+    >
+      <div>
+        <button
+          class="btn btn-2"
+        >
+          Add to Favorite
+        </button>
+        <button
+          class="btn btn-2 black"
+          disabled=""
+        >
+          Add to Cart
+        </button>
+      </div>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+  </div>
+</div>
+`;

@@ -111,10 +111,10 @@ const SeccionCantidad = memo(({cantidad,setCantidad}:{cantidad:number,setCantida
 
             <div className="buttonNumero">
                 <button onClick={() => { setCantidad(e => e - 1 < 0 ? 0 : e - 1) }}>-</button>
-                <input type="text" value={cantidad} onChange={({ target }) => {
+                <input className='CantidadTesting' type="text" value={cantidad} onChange={({ target }) => {
                     setCantidad(parseInt(target.value));
                 }} />
-                <button onClick={() => { setCantidad(e => e + 1) }}>+</button>
+                <button onClick={() => { setCantidad(e => e + 1) }} className="addCartTesting">+</button>
             </div>
             <div className="rigth">
                 total $ {(price.price_min / 100) * cantidad}
@@ -258,7 +258,7 @@ export const Product = () => {
         case 'succeded':
             return (
 <>
-                <div className="contentProduct">
+                <div className="contentProduct" data-testid="producto" id='demo'>
                     <div className="row">
                         <Galeria />
                     </div>
@@ -270,7 +270,7 @@ export const Product = () => {
         case 'rejected':
             return (<>
 
-                <h2>Error </h2>
+                <h2>Error {product} -- {JSON.stringify( status)} </h2>
             </>);
         default:
             return (<>
