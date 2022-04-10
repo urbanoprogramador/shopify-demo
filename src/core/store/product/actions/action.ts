@@ -1,4 +1,4 @@
-import { asyncProduct, typeProduct } from "../reducers/reducer";
+import { asyncProduct, IProduct, typeProduct } from "../reducers/reducer";
 import { asyncMac, mac } from "../../utils/configReducer";
 
 const [
@@ -7,7 +7,16 @@ const [
   actionProductSuccess
 ] = asyncMac(asyncProduct);
 
-export const actionLoadProduct = mac(typeProduct.loadProduct, 'payload');
+
+
+
+interface IActionProductLoad{
+  payload:IProduct
+};
+
+
+
+export const actionLoadProduct = mac<IActionProductLoad>(typeProduct.loadProduct);
 
 
 export const asyncActionLoadProduct = (url) => (dispatch) => {
@@ -19,9 +28,11 @@ export const asyncActionLoadProduct = (url) => (dispatch) => {
       'Content-Type': 'application/json'
     },
   } */).then(res => res.json())
-    .then((d) => {
+    .then((d:IProduct) => {
       console.log(d);
-      dispatch(actionLoadProduct(d));
+      dispatch(actionLoadProduct({
+        payload:d
+      }));
       dispatch(actionProductSuccess());
     }).catch((error) => {
       console.log({error});

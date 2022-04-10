@@ -1,10 +1,18 @@
-export const reduceReducers = (...reducers)=>(state,action)=>
+export const reduceReducers = <T>(...reducers:Function[])=>(state,action):T=>
   reducers.reduce((acc,el)=>el(acc,action),state);
 
 
-const initialFetching={loading:'idle',error:null};
+export interface IFetchingState{
+  loading:string,
+  error:String|null
+}
 
-export const makeFetchingReducer=actions=>(state=initialFetching,action)=>{
+
+
+export const makeFetchingReducer=(actions:String[])=>{
+  
+  const initialFetching:IFetchingState={loading:'idle',error:null};
+  return (state:IFetchingState=initialFetching,action:any):IFetchingState=>{
   switch(action.type){
     case actions[0]:{
       return {
@@ -22,12 +30,12 @@ export const makeFetchingReducer=actions=>(state=initialFetching,action)=>{
     default :
       return state;
   }
-}
+}}
 
-export const makeRemoveReducer = staticAction =>(state={},action)=>{
+export const makeRemoveReducer = <T>(staticAction:string) =>(state:T,action):T|null=>{
   switch(action.type){
     case staticAction:{
-      return {}
+      return null;
     }
     default:{
       return state
@@ -35,7 +43,10 @@ export const makeRemoveReducer = staticAction =>(state={},action)=>{
   } 
 }
 
-export const makeSetReducer=({actions,initialState={}})=>(state=initialState,action)=>{
+
+
+
+export const makeSetReducer=<T>({actions,initialState})=>(state=initialState,action):T=>{
   switch(action.type) {
     case actions:{
       return action.payload;
@@ -74,22 +85,25 @@ export const makeCrudReducer=actions=>(state = [], action) => {
 }
 
 
-export const mac = (type,...argNames)=> (...args)=>{
-  const action = {type};
-  argNames.forEach((...[,index])=>{
+
+export const mac = <T>(type:String/* ,...argNames:any[] */)=> (args:T)=>{
+  const action:{} = {type,...args};
+/*   argNames.forEach((...[,index])=>{
       action[argNames[index]]=args[index];
   });
-  return action;
+  console.log(action,args); */
+  return action ;
 }
 
-export const mat = entity =>([
+export const mat = (entity:String):String[] =>([
   `${entity} pending`,
   `${entity} rejected`,
   `${entity} success`
 ]);
 
-export const asyncMac= asyncTypes=>([
+export const asyncMac= (asyncTypes:String[]):Function[]=>([
   mac(asyncTypes[0]),
-  mac(asyncTypes[1],'payload'),
-  mac(asyncTypes[2],'payload')
+  mac(asyncTypes[1]/* ,'payload' */),
+  mac(asyncTypes[2]/* ,'payload' */)
 ]);
+

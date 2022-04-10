@@ -1,8 +1,8 @@
-import { asyncTodos, typeAuth } from "../reducers/reducer";
+import { asyncTodos, IUser, typeAuth } from "../reducers/reducer";
 import { asyncMac, mac } from "../../utils/configReducer";
 
 
-import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword ,signOut} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, updateProfile, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { auth } from "../../../firebase/firebase-config";
 
 const [
@@ -11,12 +11,18 @@ const [
   actionAuthSuccess
 ] = asyncMac(asyncTodos);
 
-export const actionAuthUser = mac(typeAuth.login, 'payload');
-export const actionAuthLogout = mac(typeAuth.logout);
+interface IActionLogin{
+  payload:IUser
+};
+
+
+export const actionAuthUser = mac<IActionLogin>(typeAuth.login /* , 'payload' */ );
+export const actionAuthLogout = mac<null>(typeAuth.logout);
+
 
 
 export const actionClearAuth = () => dispatch => {
-  dispatch(actionAuthLogout());
+  dispatch(actionAuthLogout(null));
   localStorage.removeItem('user');
 }
 
@@ -27,17 +33,17 @@ export const asyncStartGoogleLogin = () => (dispatch) => {
     .then((result) => {
       console.log(result);
       // This gives you a Google Access Token. You can use it to access the Google API.
-      const credential = GoogleAuthProvider.credentialFromResult(result);
-      console.log(credential);
+      //const credential = GoogleAuthProvider.credentialFromResult(result);
+      /* console.log(credential); */
       const user = (result.user as any);
-      console.log(user);
-
-
+      /* console.log(user); */
 
       dispatch(actionAuthUser({
+        payload:{
         displayName: user.displayName,
         email: user.email,
-        token: user.accessToken,
+        token: user.accessToken
+        }
       }));
       localStorage.setItem('user', JSON.stringify({
         displayName: user.displayName,
@@ -52,6 +58,8 @@ export const asyncStartGoogleLogin = () => (dispatch) => {
 
       //auth/popup-closed-by-user
       console.log({ error });
+      console.log(error.message);
+      console.log(error.stack);
       if (error.code === "auth/popup-closed-by-user") {
         dispatch(actionAuthError("ventana cerrada por el usuario "));
       } else {
@@ -68,26 +76,28 @@ export const asyncCreateUserWithEmailAndPassword = ({ email, password, displayna
     .then((userCredential) => {
       // Signed in 
       auth.currentUser &&
-      updateProfile(auth.currentUser, {
-        displayName: displayname
-      }).then(() => {
-        // Profile updated!
-        // ...
-        const user = (userCredential.user as any);
-        dispatch(actionAuthUser({
-          displayName: user.displayName,
-          email: user.email,
-          token: user.accessToken,
-        }));
-        localStorage.setItem('user', JSON.stringify({
-          displayName: user.displayName,
-          email: user.email,
-          token: user.accessToken,
-        }));
-        dispatch(actionAuthSuccess());
-      }).catch((error) => {
-        console.log(error);
-      });
+        updateProfile(auth.currentUser, {
+          displayName: displayname
+        }).then(() => {
+          // Profile updated!
+          // ...
+          const user = (userCredential.user as any);
+          dispatch(actionAuthUser({
+            payload:{
+              displayName: user.displayName,
+              email: user.email,
+              token: user.accessToken,
+            }
+          }));
+          localStorage.setItem('user', JSON.stringify({
+            displayName: user.displayName,
+            email: user.email,
+            token: user.accessToken,
+          }));
+          dispatch(actionAuthSuccess());
+        }).catch((error) => {
+          console.log(error);
+        });
 
       // ...
     })
@@ -111,9 +121,11 @@ export const asyncLoginEmailAndPassword = ({ email, password }) => dispatch => {
       // Signed in
       const user = (userCredential.user as any);
       dispatch(actionAuthUser({
-        displayName: user.displayName,
-        email: user.email,
-        token: user.accessToken,
+        payload:{
+          displayName: user.displayName,
+            email: user.email,
+            token: user.accessToken,
+        }
       }));
       localStorage.setItem('user', JSON.stringify({
         displayName: user.displayName,
@@ -142,11 +154,10 @@ export const asyncLoginEmailAndPassword = ({ email, password }) => dispatch => {
 export const asyncSignOut = () => dispatch => {
   dispatch(actionAuthPending());
   signOut(auth).then(() => {
-    dispatch( actionClearAuth());
-    dispatch(actionAuthUser(null));
-    dispatch( actionAuthSuccess());
+    dispatch(actionClearAuth());
+    dispatch(actionAuthSuccess());
   }).catch((error) => {
-    console.log({error});
+    console.log({ error });
     dispatch(actionAuthError("Error Desconocido "));
   });
 }

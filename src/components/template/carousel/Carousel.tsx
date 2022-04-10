@@ -90,10 +90,11 @@ const FooterCarousel = () => {
 }
 
 
-export const Carousel = ({ items, isImg }) => {
+export const Carousel = ({ items, isImg }:{items:any[],isImg:boolean}) => {
 
-    const [active, setActive] = useState(2);
-
+    const [active, setActive] = useState<number>(0);
+    console.log('estoy entrando ');
+    
     return (<CarrouselContext.Provider value={{
         active,
         setActive,
@@ -105,7 +106,6 @@ export const Carousel = ({ items, isImg }) => {
             <div className='ContenCarrousel' style={{ width: (100 * items.length) + "%", transform: "translateX(-" + ((100 / items.length) * active) + "%)" }}>
                 {
                     items.map((e, indice) => {
-                        console.log(e);
                         return <Item key={indice} item={e} />
                     })
                 }

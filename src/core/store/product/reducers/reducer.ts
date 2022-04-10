@@ -5,6 +5,23 @@ import {
   mat
 } from "../../utils/configReducer";
 
+export interface Ioptions{
+  values:any[]
+  name:String
+}
+
+
+export interface IProduct {
+  images:String[]
+  variants:any[]
+  description:String
+  title:String
+  vendor:String,
+  options:Ioptions[],
+  price_min:Number,
+  compare_at_price:Number
+}
+
 const product='[product]';
 
 export const typeProduct={
@@ -13,7 +30,7 @@ export const typeProduct={
 
 
 
-const productItemReducer=makeSetReducer({actions:typeProduct.loadProduct,initialState:{}});
+const productItemReducer=makeSetReducer<IProduct>({actions:typeProduct.loadProduct,initialState:{}});
 
 export const asyncProduct = mat(product);
 const fetchingAdminReducer=makeFetchingReducer(asyncProduct);

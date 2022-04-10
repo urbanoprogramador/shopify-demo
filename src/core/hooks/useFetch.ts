@@ -6,7 +6,7 @@ import { useCallback } from 'react';
 
 export const useFetch = ({ initialState = {} }) => {
 
-    const { token } = useSelector(selectAuthUser);
+    const { token } = useSelector(selectAuthUser)|| {token:null} ;
 
     const [values, setValues] = useState(initialState);
 

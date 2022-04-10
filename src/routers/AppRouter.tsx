@@ -21,58 +21,36 @@ import { Product } from '../components/public/product/Product';
 
 
 
-
-export const AuthComponent = () => {
-    const user = useSelector(selectAuthUser) ? true : false;
-
-
-    const navigate = useNavigate();
-
-    useEffect(() => {
-        console.log(user);
-        if (user) {
-            return navigate("/dashboard");
-        }
-    }, [user,navigate]);
-
-    return (
-        <Routes>
-            <Route path="auth/*"
-                element={
-                    <ProtectedRouter
-                        showRouter={!user}
-                        component={AuthRouter}
-                        to="/dashboard"
-                    />}
-
-            />
-            <Route path="dashboard/*"
-                element={
-                    <ProtectedRouter
-                        showRouter={user}
-                        to="/auth/login"
-                        component={DashboardRouter} />
-                } />
-        </Routes>
-    );
-}
-
 const Rutas = () => {
+
+
+    const user = useSelector(selectAuthUser) ? true : false;
 
     return (<div>
         <Routes>
             <Route path='/' >
 
-                
+                <Route path="auth/*"
+                    element={
+                        <ProtectedRouter
+                            showRouter={!user}
+                            component={AuthRouter}
+                            to="/dashboard"
+                        />}
 
-                <Route key={'uno'} path="product/:product" element={<Product />} />
+                />
 
-                {/* <Route
-                    index
-                    element={<Init />}
-                /> */}
+                <Route path="dashboard/*"
+                    element={
+                        <ProtectedRouter
+                            showRouter={user}
+                            to="/auth/login"
+                            component={DashboardRouter} />
+                    } />
 
-                  <Route
+                <Route path="product/:product" element={<Product />} />
+
+                <Route
                     path="*"
                     element={<Navigate to="/product/free-trainer-3-mmw" replace />}
                 />
@@ -80,7 +58,7 @@ const Rutas = () => {
                 <Route
                     index
                     element={<Navigate to="/product/free-trainer-3-mmw" replace />}
-                /> 
+                />
 
             </Route>
 

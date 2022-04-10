@@ -4,29 +4,40 @@ import {
   makeSetReducer,
   mat,
   makeRemoveReducer,
-  reduceReducers} from "../../utils/configReducer";
+  reduceReducers,
+  } from "../../utils/configReducer";
 
 const authName='[auth]';
+
 
 export const typeAuth={
   login: `${authName} login User`,
   logout:`${authName} logout user`
 }
+export interface IUser{
+  displayName: String,
+  email: String,
+  token: String,
+}
 
-const initLogin=()=>{
-  const user=localStorage.getItem('user');
-
-  return user?JSON.parse( user ):null;
+const initLogin=():IUser|null=>{
+  const user =localStorage.getItem('user');
+  return user && JSON.parse(user );
 }
 
 export const asyncTodos = mat(authName);
 
-const userLogout=makeRemoveReducer(typeAuth.logout);
-const userLogin=makeSetReducer({actions:typeAuth.login,initialState:initLogin()});
+
+
+
+const userLogout=makeRemoveReducer<null>(typeAuth.logout);
+
+
+const userLogin=makeSetReducer<IUser>({actions:typeAuth.login,initialState:initLogin()});
 
 export const fetchingReducer=makeFetchingReducer(asyncTodos);
 
 export const userReducer=combineReducers({
-  user:reduceReducers(userLogin,userLogout),
+  user:reduceReducers<IUser|null>(userLogin,userLogout),
   status:fetchingReducer
 });
