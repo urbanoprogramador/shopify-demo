@@ -27,6 +27,8 @@ paso uno
 
 ### npm install @types/jest @testing-library/react @testing-library/jest-dom jest ts-jest
 
+### npm i -D --exact jest-watch-typeahead@0.6.5
+
 paso 2 crear el archivo jest.config.js con el siguiente contenido
 
 ``` JavaScript
