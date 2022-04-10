@@ -10,5 +10,11 @@ ve al directorio del proyecto y corre
 
 ### `npm run start`
 
+# Hay un demo de este mismo proyecto pasado a typescript para un tipado de dato mas estricto 
 
+ejecutar los siguientes comenados
+
+### `git checkout typescripts `
+y se deven instalar las nuevas librerias para el soporte de typescript con el comando
+### `npm i`
 
